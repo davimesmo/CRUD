@@ -13,5 +13,11 @@ export class estoqueService{
             await writeCSV(filePath, [data]);
         }
     }
+    async remover(data:Data){
+        let produtos = readCSV(filePath);
+        
+        let removido = (await produtos).filter((produtos)=> produtos.nome != data.nome);
+        writeCSV(filePath, removido);
+    }
 }
 
